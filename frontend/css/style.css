@@ -1,90 +1,315 @@
-/* Estilos generales para toda la página */
+/* ============================================= */
+/* VARIABLES Y ESTILOS GLOBALES                  */
+/* ============================================= */
+:root {
+    --color-primario: #3498db;      /* Azul principal para botones y enlaces */
+    --color-primario-hover: #2980b9;/* Azul más oscuro para el efecto hover */
+    --color-secundario: #2c3e50;    /* Azul oscuro para títulos y texto importante */
+    --color-texto: #333;           /* Color de texto principal (casi negro) */
+    --color-fondo: #f4f7f6;         /* Un gris muy claro y suave para el fondo */
+    --color-blanco: #ffffff;
+    --sombra-suave: 0 4px 15px rgba(0, 0, 0, 0.08);
+    --fuente-principal: 'Poppins', sans-serif;
+}
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: var(--fuente-principal);
     margin: 0;
-    padding: 20px;
-    background-color: #f4f4f4; /* Un gris muy claro para el fondo */
-    color: #333;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.6;
 }
 
-h1 {
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    color: var(--color-secundario);
+    font-weight: 600;
+}
+
+/* ============================================= */
+/* ENCABEZADO Y NAVEGACIÓN                       */
+/* ============================================= */
+.site-header {
+    background-color: var(--color-blanco);
+    padding: 15px 0;
+    box-shadow: var(--sombra-suave);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-primario);
+    text-decoration: none;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--color-texto);
+    margin-left: 25px;
+    font-weight: 400;
+    transition: color 0.2s ease-in-out;
+}
+
+.main-nav a:hover {
+    color: var(--color-primario);
+}
+
+.cart-icon {
+    position: relative;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -12px;
+    background-color: #e74c3c;
+    color: var(--color-blanco);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+
+/* ============================================= */
+/* BANNER PRINCIPAL (HERO)                       */
+/* ============================================= */
+.hero {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)), url('https://picsum.photos/id/1015/1600/600');
+    background-size: cover;
+    background-position: center;
+    color: var(--color-blanco);
+    padding: 100px 0;
     text-align: center;
-    color: #2c3e50;
-    margin-bottom: 40px;
 }
 
-/* El contenedor principal de todos los productos */
+.hero-text h2 {
+    font-size: 3rem;
+    color: var(--color-blanco);
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.btn-primary {
+    background-color: var(--color-primario);
+    color: var(--color-blanco);
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primario-hover);
+    transform: translateY(-2px);
+}
+
+/* ============================================= */
+/* SECCIÓN DE PRODUCTOS                          */
+/* ============================================= */
+main.container {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+}
+
 .productos-container {
-    display: flex; /* Usamos Flexbox para alinear las tarjetas */
-    flex-wrap: wrap; /* Permite que las tarjetas pasen a la siguiente línea si no caben */
-    justify-content: center; /* Centra las tarjetas horizontalmente */
-    gap: 25px; /* Espacio entre cada tarjeta */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
 }
 
-/* Estilo para cada tarjeta de producto */
+/* Mensaje de carga/error */
+.loading-message, .error-msg {
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #777;
+    padding: 40px;
+}
+.error-msg {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+/* Tarjeta de Producto (Reutilizamos y mejoramos el diseño anterior) */
 .producto-card {
-    background-color: #ffffff; /* Fondo blanco para la tarjeta */
-    border-radius: 10px; /* Bordes redondeados */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil para darle profundidad */
-    width: 280px; /* Ancho fijo para cada tarjeta */
-    overflow: hidden; /* Oculta cualquier parte de la imagen que se salga */
-    transition: transform 0.2s, box-shadow 0.2s; /* Animación suave al pasar el mouse */
+    background-color: var(--color-blanco);
+    border-radius: 10px;
+    box-shadow: var(--sombra-suave);
+    width: 280px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
     display: flex;
     flex-direction: column;
 }
 
-/* Efecto al pasar el mouse sobre la tarjeta */
 .producto-card:hover {
-    transform: translateY(-5px); /* Eleva la tarjeta ligeramente */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
 
-/* Estilo para la imagen del producto */
 .producto-img {
     width: 100%;
-    height: 200px; /* Altura fija para todas las imágenes */
-    object-fit: cover; /* Asegura que la imagen cubra el espacio sin deformarse */
+    height: 200px;
+    object-fit: cover;
 }
 
-/* Contenedor para la información del producto (nombre, precio, botón) */
 .producto-info {
     padding: 20px;
     text-align: center;
-    flex-grow: 1; /* Permite que este contenedor crezca para ocupar el espacio disponible */
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
 }
 
-/* Nombre del producto */
 .producto-nombre {
-    font-size: 1.2rem; /* Tamaño de fuente */
+    font-size: 1.1rem;
     margin: 0 0 10px 0;
-    color: #34495e;
 }
 
-/* Precio del producto */
 .producto-precio {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     font-weight: bold;
-    color: #e74c3c; /* Un color llamativo para el precio */
-    margin: 0 0 20px 0;
-    flex-grow: 1; /* Empuja el botón hacia abajo */
+    color: var(--color-primario);
+    margin: auto 0 20px 0;
 }
 
-/* Botón "Añadir al Carrito" */
 .producto-btn {
-    background-color: #3498db; /* Color de fondo azul */
-    color: white; /* Texto blanco */
+    background-color: var(--color-secundario);
+    color: white;
     border: none;
     padding: 12px 20px;
     border-radius: 5px;
-    cursor: pointer; /* Cambia el cursor a una manito */
-    font-size: 1rem;
-    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
     transition: background-color 0.2s;
 }
 
-/* Efecto al pasar el mouse sobre el botón */
 .producto-btn:hover {
-    background-color: #2980b9; /* Un azul un poco más oscuro */
+    background-color: #3e5771;
+}
+
+/* ============================================= */
+/* PIE DE PÁGINA                                 */
+/* ============================================= */
+.site-footer {
+    background-color: var(--color-secundario);
+    color: #bdc3c7;
+    padding-top: 40px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding-bottom: 40px;
+}
+
+.footer-content h3 {
+    color: var(--color-blanco);
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.footer-about, .footer-links, .footer-social {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links a {
+    color: #bdc3c7;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: var(--color-primario);
+}
+
+.footer-social a {
+    color: #bdc3c7;
+    font-size: 1.5rem;
+    margin-right: 15px;
+    transition: color 0.2s;
+}
+
+.footer-social a:hover {
+    color: var(--color-primario);
+}
+
+.footer-copyright {
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid #3e5771;
+    font-size: 0.9rem;
+}
+
+/* ============================================= */
+/* DISEÑO RESPONSIVO (PARA MÓVILES)              */
+/* ============================================= */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .main-nav a {
+        margin: 0 10px;
+    }
+
+    .hero-text h2 {
+        font-size: 2.2rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-social {
+        margin-top: 20px;
+    }
 }

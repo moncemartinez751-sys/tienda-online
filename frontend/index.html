@@ -3,26 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StyleSync - Tu Tienda Online</title>
     
-    <title>Mi Tienda Online</title>
+    <!-- Google Fonts: Una fuente moderna y legible (Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     
+    <!-- Font Awesome: Para usar iconos como el del carrito y redes sociales -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tu hoja de estilos CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <header>
-        <h1>Mi Tienda Online 🛍️</h1>
+    <!-- ============================================= -->
+    <!-- ENCABEZADO Y NAVEGACIÓN                       -->
+    <!-- ============================================= -->
+    <header class="site-header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                StyleSync ✨
+            </a>
+            <nav class="main-nav">
+                <a href="#">Inicio</a>
+                <a href="#">Catálogo</a>
+                <a href="#">Ofertas</a>
+                <a href="#" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </nav>
+        </div>
     </header>
 
-    <main>
+    <!-- ============================================= -->
+    <!-- BANNER PRINCIPAL (SECCIÓN HERO)               -->
+    <!-- ============================================= -->
+    <section class="hero">
+        <div class="container hero-text">
+            <h2>Novedades Destacadas</h2>
+            <p>Explora nuestra selección de productos únicos y encuentra tus nuevos favoritos.</p>
+            <a href="#" class="btn-primary">Explorar Productos</a>
+        </div>
+    </section>
+
+    <!-- ============================================= -->
+    <!-- SECCIÓN DE PRODUCTOS                          -->
+    <!-- ============================================= -->
+    <main class="container">
+        <h2 class="section-title">Nuestros Productos Destacados</h2>
+        <!-- Aquí es donde tu JavaScript cargará las tarjetas de productos -->
         <section id="productos-container" class="productos-container">
-            </section>
+            <!-- Mensaje de carga que será reemplazado por los productos -->
+            <p class="loading-message">Cargando productos...</p>
+        </section>
     </main>
 
-    <footer>
-        <p>&copy; 2025 Mi Tienda Online. Todos los derechos reservados.</p>
+    <!-- ============================================= -->
+    <!-- PIE DE PÁGINA                                 -->
+    <!-- ============================================= -->
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-about">
+                <h3>Sobre StyleSync</h3>
+                <p>Tu tienda de confianza para encontrar moda única y de calidad. Estilo que se sincroniza contigo.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="#">Preguntas Frecuentes</a></li>
+                    <li><a href="#">Política de Devoluciones</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Síguenos</h3>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <p>&copy; 2025 StyleSync. Diseñado con ❤️.</p>
+        </div>
     </footer>
 
+    <!-- Tu script de JavaScript, siempre al final -->
     <script src="js/app.js"></script>
 </body>
 </html>
+
