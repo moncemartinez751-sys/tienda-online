@@ -27,13 +27,21 @@
                 StyleSync ✨
             </a>
             <nav class="main-nav">
-                <a href="#">Inicio</a>
-                <a href="#">Catálogo</a>
-                <a href="#">Ofertas</a>
-                <a href="#" class="cart-icon">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="cart-count">0</span>
-                </a>
+                <!-- Contenedor para usuarios DESCONECTADOS (visible por defecto) -->
+                <div id="nav-logged-out" style="display: flex; align-items: center; gap: 15px;">
+                    <a href="login.html" class="btn-secondary">Iniciar Sesión</a>
+                    <a href="registro.html" class="btn-primary-outline">Registrarse</a>
+                </div>
+
+                <!-- Contenedor para usuarios CONECTADOS (oculto por defecto) -->
+                <div id="nav-logged-in" style="display: none; align-items: center; gap: 20px;">
+                    <span id="user-greeting" class="user-greeting"></span>
+                    <a href="../backend/controllers/logoutController.php" class="btn-secondary">Cerrar Sesión</a>
+                    <a href="#" class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
             </nav>
         </div>
     </header>
@@ -90,8 +98,9 @@
         </div>
     </footer>
 
-    <!-- Tu script de JavaScript, siempre al final -->
+    <!-- Tus scripts de JavaScript, siempre al final -->
     <script src="js/app.js"></script>
+    <script src="js/auth.js"></script> <!-- Script añadido para la lógica de autenticación -->
 </body>
 </html>
 

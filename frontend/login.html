@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - StyleSync</title>
+
+    <!-- Importamos fuentes para consistencia visual -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Reutilizamos tu hoja de estilos principal -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Estilos específicos para el formulario (son los mismos que en registro.html) -->
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: var(--color-fondo);
+        }
+        .form-container {
+            width: 100%;
+            max-width: 450px;
+            padding: 40px;
+            background-color: var(--color-blanco);
+            border-radius: 10px;
+            box-shadow: var(--sombra-suave);
+            text-align: center;
+        }
+        .form-container h2 {
+            color: var(--color-secundario);
+            margin-bottom: 25px;
+        }
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-family: var(--fuente-principal);
+        }
+        .form-button {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--color-primario);
+            color: var(--color-blanco);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+        .form-button:hover {
+            background-color: var(--color-primario-hover);
+        }
+        .form-link {
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+        .form-link a {
+            color: var(--color-primario);
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Bienvenido de Nuevo 👋</h2>
+        
+        <!-- El ID 'login-form' es crucial para que JavaScript lo encuentre -->
+        <form id="login-form">
+            <input type="email" name="email" class="form-input" placeholder="Correo electrónico" required>
+            <input type="password" name="password" class="form-input" placeholder="Contraseña" required>
+            <button type="submit" class="form-button">Entrar</button>
+        </form>
+
+        <p class="form-link">¿No tienes una cuenta? <a href="registro.html">Regístrate aquí</a></p>
+    </div>
+
+    <!-- Enlazamos el script de JavaScript para el login -->
+    <script src="js/login.js"></script>
+</body>
+</html>
