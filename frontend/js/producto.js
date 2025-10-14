@@ -32,19 +32,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </div>
             `;
-            // ... dentro del .then del fetch en producto.js
-        container.innerHTML = `...`; // Tu código existente
 
-        // --- AÑADE ESTAS LÍNEAS ---
-        const btnAgregar = container.querySelector('.btn-agregar');
+            // 4. Buscar el botón DESPUÉS de haberlo creado
+            const btnAgregar = container.querySelector('.btn-agregar');
+            
+            // 5. Asignar el evento de clic
             btnAgregar.addEventListener('click', () => {
-            agregarAlCarrito(producto.id);
-});
-// -------------------------
+                agregarAlCarrito(producto.id);
+            });
         })
         .catch(error => {
             const container = document.getElementById('producto-detalle-container');
-            container.innerHTML = `<p>Error al cargar el producto. Por favor, intenta de nuevo.</p>`;
+            container.innerHTML = <p>Error al cargar el producto. Por favor, intenta de nuevo.</p>;
             console.error('Error:', error);
         });
 });
