@@ -7,7 +7,7 @@ class Producto
     private $table_name = "productos";
 
     // Propiedades del objeto
-    public $id; // <-- AÑADE ESTA LÍNEA
+    public $id;
     public $nombre;
     public $descripcion;
     public $precio;
@@ -18,13 +18,16 @@ class Producto
         $this->conn = $db;
     }
 
-    // Método para obtener todos los productos (ya lo tienes)
+    // Método para obtener todos los productos
     public function getAll()
     {
-        // ... tu código existente ...
+        $query = "SELECT * FROM " . $this->table_name;
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt;
     }
 
-    // --- AÑADE ESTE NUEVO MÉTODO ---
+    // Método para obtener un solo producto por su ID
     public function getOne()
     {
         $query = "SELECT * FROM " . $this->table_name . " WHERE id = ? LIMIT 0,1";
@@ -35,7 +38,6 @@ class Producto
 
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // Asignamos los valores a las propiedades del objeto
         if ($row) {
             $this->nombre = $row['nombre'];
             $this->descripcion = $row['descripcion'];
@@ -43,5 +45,4 @@ class Producto
             $this->imagen_url = $row['imagen_url'];
         }
     }
-    // ---------------------------------
 }
