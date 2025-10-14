@@ -311,5 +311,19 @@ main.container {
 
     .footer-social {
         margin-top: 20px;
-    }
+    }   
 }
+.producto-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+.producto-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+.detalle-card { display: flex; gap: 30px; }
+.detalle-card img { max-width: 400px; border-radius: 8px; }
+.detalle-info .precio { font-size: 1.5em; display: block; margin: 20px 0; }
+.btn-agregar { background-color: #28a745; color: white; border: none; padding: 15px 30px; border-radius: 5px; cursor: pointer; font-size: 1em; }

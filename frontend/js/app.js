@@ -10,12 +10,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 const card = document.createElement('div');
                 card.classList.add('producto-card');
 
-                card.innerHTML = `
-                    <h3>${producto.nombre}</h3>
-                    <p>${producto.descripcion}</p>
-                    <strong>Precio: $${producto.precio}</strong>
-                `;
-                container.appendChild(card);
+                // ... dentro de tu fetch, en el forEach ...
+
+// Hacemos que toda la tarjeta sea un enlace
+card.innerHTML = `
+    <a href="producto.html?id=${producto.id}" class="producto-link">
+        <img src="${producto.imagen_url}" alt="${producto.nombre}">
+        <h3>${producto.nombre}</h3>
+        <strong>Precio: $${producto.precio}</strong>
+    </a>
+`;
+container.appendChild(card);
             });
         })
         .catch(error => console.error('Error:', error));
